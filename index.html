@@ -2,40 +2,41 @@
 <html>
   <head> </head>
   <body>
-    <button onclick="adress()">
-      click me for adress
+    <button onclick="address()">
+      click me for address
     </button>
-   
-    </br>
-  
-  <button onclick = "getData()">
-  </button>
-  </br>
-</br>
-<input id = "nameIn">
-<input id = "ageIn">
-<input id = "outbox" readonly>
+    <br />
+    <button onclick="getData()">
+      click me
+    </button>
+    <br />
+    <br />
+    <input id="nameIn" />
+    <input id="ageIn" />
+    <input id="outbox" readonly />
 
-<h2>
-  your name is: <a id = "outbox2">Bryan</a>
-</h2>
-<h2>
-  your age is: <a id = "outbox3">18</a>
-</h2>
+    <h2>your name is: <a id="outbox2">Bryan</a></h2>
+    <h2>your age is: <a id="outbox3">18</a></h2>
 
     <p>Sample html</p>
-</body>
+  </body>
 </html>
 
 <script>
-  
-  Function adress() {
+
+  Function address() {
     alert("B.Okah /");
     alert("Room 11");
-    alert("purple")
+    alert("purple corridor");
+    alert("ardee");}
+
+  Function getData(){
+  var name = document.getElementById("nameIn").value;
+  alert(name);
+  var age = document.getElementById("ageIn").value;
+  alert(age);
+  document.getElementById("outbox").value=age;
+  document.getElementbyId("outbox2").innerHTML=name;
+  document.getElementbtId("outbox3").innerHTML=age;
   }
-
-
-
-
 </script>
