@@ -1,27 +1,11 @@
-/*
-This is your site JavaScript code - you can add interactivity and carry out processing
-- Initially the JS writes a message to the console, and moves a button you can add from the README
-*/
-
-// Print a message in the browser's dev tools console each time the page loads
-// Use your menus or right-click / control-click and choose "Inspect" > "Console"
-console.log("Hello 🌎");
-
-/* 
-Make the "Click me!" button move when the visitor clicks it:
-- First add the button to the page by following the "Next steps" in the README
-*/
-const btn = document.querySelector("button"); // Get the button from the page
-// Detect clicks on the button
-if (btn) {
-  btn.onclick = function() {
-    // The JS works in conjunction with the 'dipped' code in style.css
-    btn.classList.toggle("dipped");
-  };
-}
-
-// This is a single line JS comment
-/*
-This is a comment that can span multiple lines 
-- use comments to make your own notes!
-*/
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyC3PB5iJzkYtws6AWFW9J9zAY6OvMUe_2A",
+  authDomain: "fir-46ec6.firebaseapp.com",
+  databaseURL: "https://fir-46ec6-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "fir-46ec6",
+  storageBucket: "fir-46ec6.appspot.com",
+  messagingSenderId: "486057960060",
+  appId: "1:486057960060:web:03195f26976e5f8a5f1ff9",
+  measurementId: "G-RHJ4JDQ6B9"
+};
