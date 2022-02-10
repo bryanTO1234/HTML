@@ -1,132 +1,352 @@
 
-<ul>
-  <li><a href="Home.html">Home</a></li>
-  <li><a href="news.html">News</a></li>
-  <li><a href="contact.html">Contact</a></li>
-  <li><a href="login.html">Login</a></li>
-</ul>
-<style>
-    ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
+<!DOCTYPE html> 
 
-li {
-  float: left;
-}
+<html> 
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
+<head> 
 
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  background-color: green;
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+<style> 
+
+/* Style all input fields */ 
+
+input { 
+
+  width: 100%; 
+
+  padding: 12px; 
+
+  border: 1px solid #ccc; 
+
+  border-radius: 4px; 
+
+  box-sizing: border-box; 
+
+  margin-top: 6px; 
+
+  margin-bottom: 16px; 
+
+} 
+
+ 
+
+/* Style the submit button */ 
+
+input[type=submit] { 
+
+  background-color: #04AA6D; 
+
+  color: white; 
+
+} 
+
+ 
+
+/* Style the container for inputs */ 
+
+.container { 
+
+  background-color: #f1f1f1; 
+
+  padding: 20px; 
+
+} 
+
+ 
+
+/* The message box is shown when the user clicks on the password field */ 
+
+#message { 
+
+  display:none; 
+
+  background: #f1f1f1; 
+
+  color: #000; 
+
+  position: relative; 
+
+  padding: 20px; 
+
+  margin-top: 10px; 
+
+} 
+
+ 
+
+#message p { 
+
+  padding: 10px 35px; 
+
+  font-size: 18px; 
+
+} 
+
+ 
+
+/* Add a green text color and a checkmark when the requirements are right */ 
+
+.valid { 
+
+  color: green; 
+
+} 
+
+ 
+
+.valid:before { 
+
+  position: relative; 
+
+  left: -35px; 
+
+  content: "✔"; 
+
+} 
+
+ 
+
+/* Add a red text color and an "x" when the requirements are wrong */ 
+
+.invalid { 
+
+  color: red; 
+
+} 
+
+ 
+
+.invalid:before { 
+
+  position: relative; 
+
+  left: -35px; 
+
+  content: "✖"; 
+
+} 
+
+</style> 
+
+</head> 
+
+<body> 
+
+ 
+
+<h3>Password Validation</h3> 
+
+<p>Try to submit the form.</p> 
+
+ 
+
+<div class="container"> 
+
+  <form action="/action_page.php"> 
+
+    <label for="username">Username</label> 
+
+    <input type="text" id="username" name="username" required> 
+
+ 
+
+    <label for="psw">Password</label> 
+
+    <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required> 
+
+     
+
+    <button type="submit" value="Submit" onclick = "getData()"> Submit</button> 
+
+  </form> 
+
+</div> 
+
+ 
+
+<div id="message"> 
+
+  <h3>Password must contain the following:</h3> 
+
+  <p id="letter" class="invalid">A <b>lowercase</b> letter</p> 
+
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p> 
+
+  <p id="number" class="invalid">A <b>number</b></p> 
+
+  <p id="length" class="invalid">Minimum <b>8 characters</b></p> 
+
+</div> 
+
+ 
+
+<script> 
+
+var myInput = document.getElementById("psw"); 
+
+var letter = document.getElementById("letter"); 
+
+var capital = document.getElementById("capital"); 
+
+var number = document.getElementById("number"); 
+
+var length = document.getElementById("length"); 
+
+var username = document.getElementById("username"); 
+
+ 
+
+// When the user clicks on the password field, show the message box 
+
+myInput.onfocus = function() { 
+
+  document.getElementById("message").style.display = "block"; 
+
+} 
+
+ 
+
+// When the user clicks outside of the password field, hide the message box 
+
+myInput.onblur = function() { 
+
+  document.getElementById("message").style.display = "none"; 
+
+} 
+
+ 
+
+// When the user starts to type something inside the password field 
+
+myInput.onkeyup = function() { 
+
+  // Validate lowercase letters 
+
+  var lowerCaseLetters = /[a-z]/g; 
+
+  if(myInput.value.match(lowerCaseLetters)) {   
+
+    letter.classList.remove("invalid"); 
+
+    letter.classList.add("valid"); 
+
+  } else { 
+
+    letter.classList.remove("valid"); 
+
+    letter.classList.add("invalid"); 
+
+  } 
+
    
-</style>   
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-form {border: 3px solid #f1f1f1;}
+  // Validate capital letters 
 
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+  var upperCaseLetters = /[A-Z]/g; 
 
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
+  if(myInput.value.match(upperCaseLetters)) {   
 
-button:hover {
-  opacity: 0.8;
-}
+    capital.classList.remove("invalid"); 
 
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
+    capital.classList.add("valid"); 
 
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
+  } else { 
 
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-  }
-.container {
-  padding: 16px;
-}
+    capital.classList.remove("valid"); 
 
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
+    capital.classList.add("invalid"); 
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
-</style>
-</head>
-<body>
+  } 
 
-<h2>Login Form</h2>
+ 
 
-<form action="/action_page.php" method="post">
-  <div class="imgcontainer">
-    <img src="https://mediastreet.ie/wp-content/uploads/2017/08/blank-profile-picture.png" alt="The Importance of Your Profile Picture for Your Career - Mediastreet" jsaction="load:XAeZkd;" jsname="HiaYvf" class="n3VNCb" data-noaft="1" style="width: 383px; height: 383px; margin: 0px;">
-  </div>
+  // Validate numbers 
 
-  <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+  var numbers = /[0-9]/g; 
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-        
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
+  if(myInput.value.match(numbers)) {   
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-</form>
+    number.classList.remove("invalid"); 
 
-</body>
-</html>
+    number.classList.add("valid"); 
 
+  } else { 
+
+    number.classList.remove("valid"); 
+
+    number.classList.add("invalid"); 
+
+  } 
+
+   
+
+  // Validate length 
+
+  if(myInput.value.length >= 8) { 
+
+    length.classList.remove("invalid"); 
+
+    length.classList.add("valid"); 
+
+  } else { 
+
+    length.classList.remove("valid"); 
+
+    length.classList.add("invalid"); 
+
+  } 
+
+} 
+
+ 
+
+ function getData() { 
+
+          var passw = /Pass1234/; 
+
+ 
+
+          var userN = "BryanTO"; 
+
+ 
+
+          if (myInput.value.match(passw) && username.value.match(userN)) { 
+
+             
+
+              // worked with "" also worked with == "JaneDoe" 
+
+ 
+
+              alert("You have successfully logged in"); 
+
+             
+
+        location.replace("profile.html"); 
+
+             
+
+          } else { 
+
+            alert("Incorrect, please try again"); 
+
+          } 
+
+ 
+
+          document.getElementById("username").value = ""; 
+
+ 
+
+          document.getElementById("psw").value = ""; 
+
+        } 
+
+</script> 
+
+ 
+
+</body> 
+
+</html> 
